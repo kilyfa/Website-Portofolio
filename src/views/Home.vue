@@ -60,8 +60,10 @@
 
       <!-- CTA -->
       <div class="flex flex-wrap justify-center gap-4 mt-6">
-        <router-link to="/certificate" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition-all text-sm sm:text-base">🎓 Sertifikasi</router-link>
-        <router-link to="/projects" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition-all text-sm sm:text-base">🧠 Project | Portofolio</router-link>
+        <router-link to="/certificate" class="flex-1 min-w-[150px] text-center px-5 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition-all text-sm sm:text-base"> 🎓 Sertifikasi </router-link>
+        <router-link to="/projects" class="flex-1 min-w-[150px] text-center px-5 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition-all text-sm sm:text-base">
+          🧠 Project | Portofolio
+        </router-link>
       </div>
 
       <!-- Media Sosial -->
