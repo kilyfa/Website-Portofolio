@@ -80,7 +80,7 @@ const projectData = [
     slug: "strategy-investasi",
     title: "Strategy Investasi Cryptocurrency",
     description: "Menganalisis strategi terbaik dalam investasi cryptocurrency berdasarkan data historis dari 10 aset teratas di CoinMarketCap.",
-    files: ["../src/assets/pdf/Strategy-Investasi.pdf"],
+    files: ["https://drive.google.com/file/d/1Ho-TwUk8mAZpy6RqaMBeeq91LMejE5kT/view?usp=sharing"],
   },
   {
     slug: "big-data-kimia-farma",
