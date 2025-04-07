@@ -80,13 +80,13 @@ const projectData = [
     slug: "strategy-investasi",
     title: "Strategy Investasi Cryptocurrency",
     description: "Menganalisis strategi terbaik dalam investasi cryptocurrency berdasarkan data historis dari 10 aset teratas di CoinMarketCap.",
-    files: ["../src/assets/pdf/Strategy-Investasi.pdf"],
+    files: ["../pdf/Strategy-Investasi.pdf"],
   },
   {
     slug: "big-data-kimia-farma",
     title: "Performa Penjualan Kimia Farma",
     description: "Analisis mendalam terhadap data penjualan Kimia Farma untuk mengevaluasi tren dan kinerja bisnis.",
-    files: ["../src/assets/pdf/kimia-farma.pdf"],
+    files: ["../pdf/kimia-farma.pdf"],
   },
   {
     slug: "wallpaper-app",
@@ -108,7 +108,7 @@ const projectData = [
     slug: "kistore",
     title: "Kilyfa Store | Bisnis Pribadi",
     description: "Merancang website e-commerce berbasis Laravel untuk penjualan produk digital dan top-up game, lengkap dengan sistem admin untuk pengelolaan pesanan dan data secara real-time.",
-    files: ["../src/assets/kistore/Kistore (4).png", "../src/assets/kistore/Kistore (3).png", "../src/assets/kistore/Kistore (2).png", "../src/assets/kistore/Kistore (1).png"],
+    files: ["../kistore/Kistore (4).png", "../kistore/Kistore (3).png", "../kistore/Kistore (2).png", "../kistore/Kistore (1).png"],
   },
   {
     slug: "bulbul",
