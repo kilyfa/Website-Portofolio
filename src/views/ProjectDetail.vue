@@ -38,7 +38,7 @@
           <a href="https://bulbultopup.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline hover:text-blue-800 transition"> Klik Di Sini </a>
         </h3>
       </div>
-      <div v-else-if="project.slug === 'wallpaper-app'">
+      <div v-else-if="project.slug === 'travel-mate'">
         <h3 class="text-lg font-medium text-gray-700 mt-6 flex items-center gap-2">
           <!-- Ikon GitHub -->
           <svg class="w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
