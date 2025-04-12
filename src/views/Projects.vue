@@ -26,6 +26,11 @@
     <div>
       <h3 class="text-2xl font-semibold text-gray-700 border-b-2 pb-2 border-gray-300 mb-8 flex items-center gap-2"><i class="fas fa-laptop-code text-indigo-600"></i> Web & Mobile Development</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <router-link to="/project/travel-mate" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
+          <h4 class="text-xl font-bold mb-2 text-gray-900">TravelMate</h4>
+          <p class="text-sm text-gray-600">Travel Mate adalah aplikasi yang memberikan rekomendasi destinasi wisata Indonesia secara personal dengan teknologi canggih.</p>
+        </router-link>
+
         <router-link to="/project/kistore" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
           <h4 class="text-xl font-bold mb-2 text-gray-900">Kilyfa Store</h4>
           <p class="text-sm text-gray-600">E-commerce Laravel untuk produk digital & top-up dengan admin panel lengkap.</p>
