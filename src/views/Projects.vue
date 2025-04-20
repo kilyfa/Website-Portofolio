@@ -9,48 +9,66 @@
     <!-- Data Intelligence -->
     <div class="mb-20">
       <h3 class="text-2xl font-semibold text-gray-700 border-b-2 pb-2 border-gray-300 mb-8 flex items-center gap-2"><i class="fas fa-database text-indigo-600"></i> Data Intelligence</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <router-link to="/project/strategy-investasi" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Strategi Investasi</h4>
-          <p class="text-sm text-gray-600">Analisis strategi optimal dalam investasi kripto berdasarkan data historis 10 aset CoinMarketCap.</p>
-        </router-link>
-
-        <router-link to="/project/big-data-kimia-farma" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Performa Penjualan Kimia Farma</h4>
-          <p class="text-sm text-gray-600">Evaluasi tren dan kinerja bisnis berdasarkan data penjualan Kimia Farma.</p>
+      <div v-if="dataIntelligence.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <router-link
+          v-for="project in dataIntelligence"
+          :key="project.slug"
+          :to="`/project/${project.slug}`"
+          class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block"
+        >
+          <h4 class="text-xl font-bold mb-2 text-gray-900">{{ project.title }}</h4>
+          <p class="text-sm text-gray-600">{{ project.description }}</p>
         </router-link>
       </div>
+      <div v-else class="text-gray-500">Belum ada proyek pada kategori ini.</div>
     </div>
 
     <!-- Web & Mobile Developer -->
     <div>
       <h3 class="text-2xl font-semibold text-gray-700 border-b-2 pb-2 border-gray-300 mb-8 flex items-center gap-2"><i class="fas fa-laptop-code text-indigo-600"></i> Web & Mobile Development</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <router-link to="/project/travel-mate" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">TravelMate</h4>
-          <p class="text-sm text-gray-600">Travel Mate adalah aplikasi yang memberikan rekomendasi destinasi wisata Indonesia secara personal dengan teknologi canggih.</p>
-        </router-link>
-
-        <router-link to="/project/kistore" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Kilyfa Store</h4>
-          <p class="text-sm text-gray-600">E-commerce Laravel untuk produk digital & top-up dengan admin panel lengkap.</p>
-        </router-link>
-
-        <router-link to="/project/bulbul" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Bulbul Topup</h4>
-          <p class="text-sm text-gray-600">Website top-up berbasis Laravel dengan sistem pembayaran otomatis & manajemen user.</p>
-        </router-link>
-
-        <router-link to="/project/lahiran-nyaman" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Lahiran Nyaman</h4>
-          <p class="text-sm text-gray-600">Website profil klinik dengan informasi layanan, jadwal, dan dokter secara informatif & responsif.</p>
-        </router-link>
-
-        <router-link to="/project/wallpaper-app" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
-          <h4 class="text-xl font-bold mb-2 text-gray-900">Wallpaper Application</h4>
-          <p class="text-sm text-gray-600">Aplikasi penyedia wallpaper HD dengan desain intuitif dan performa ringan.</p>
+      <div v-if="webMobile.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <router-link v-for="project in webMobile" :key="project.slug" :to="`/project/${project.slug}`" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:scale-[1.02] block">
+          <h4 class="text-xl font-bold mb-2 text-gray-900">{{ project.title }}</h4>
+          <p class="text-sm text-gray-600">{{ project.description }}</p>
         </router-link>
       </div>
+      <div v-else class="text-gray-500">Belum ada proyek pada kategori ini.</div>
     </div>
+
+    <!-- Loading & Error -->
+    <div v-if="loading" class="text-center mt-10 text-gray-400">Loading...</div>
+    <div v-if="errorMsg" class="text-center mt-6 text-red-500">{{ errorMsg }}</div>
   </section>
 </template>
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { supabase } from "../supabase"; // Pastikan path-nya sesuai
+
+const dataIntelligence = ref([]);
+const webMobile = ref([]);
+const loading = ref(true);
+const errorMsg = ref("");
+
+const fetchProjects = async () => {
+  loading.value = true;
+  errorMsg.value = "";
+
+  const { data, error } = await supabase.from("projects").select("title, description, slug, category").order("created_at", { ascending: false });
+
+  if (error) {
+    errorMsg.value = "Gagal mengambil data proyek. Coba lagi nanti.";
+    console.error("Supabase error:", error);
+  } else {
+    dataIntelligence.value = data.filter((p) => p.category === "data_intelligence");
+    webMobile.value = data.filter((p) => p.category === "web_mobile_development");
+    console.log("Data dari Supabase:", data);
+  }
+
+  loading.value = false;
+};
+
+onMounted(() => {
+  fetchProjects();
+});
+</script>
