@@ -42,6 +42,13 @@
         </h3>
       </div>
 
+      <div v-else-if="project.slug === 'dashboard-visualization'" class="mt-6">
+        <h3 class="text-lg font-medium text-gray-700 flex items-center gap-2">
+          🌐 You can see more details at this link:
+          <a href="https://public.tableau.com/app/profile/abdul.aziz8218/vizzes" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline hover:text-blue-800 transition"> Klik Di Sini </a>
+        </h3>
+      </div>
+
       <div v-else-if="project.slug === 'travel-mate'" class="mt-6">
         <h3 class="text-lg font-medium text-gray-700 flex items-center gap-2">
           <svg class="w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
