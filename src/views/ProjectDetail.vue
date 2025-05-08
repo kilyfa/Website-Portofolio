@@ -109,7 +109,3 @@ onMounted(() => {
   fetchProject();
 });
 </script>
-
-<style scoped>
-/* Tambahan jika diperlukan */
-</style>
